@@ -4,14 +4,14 @@ function l(){
 }
 l('angularJS Task');
 
-var myApp = angular.module("DSC",['ui.router','ui.bootstrap',"myApp.directives","myApp.services","myApp.filters","myApp.controllers","compileExample",'ngMessages']),
-    appDirectives = angular.module("myApp.directives",[]),
-    appServices = angular.module("myApp.services",[]),
-    appFilters = angular.module("myApp.filters",[]),
-    appControllers = angular.module("myApp.controllers",[]);
+var xmApp = angular.module("XM",['ui.router','ui.bootstrap',"xmApp.directives","xmApp.services","xmApp.filters","xmApp.controllers","compileExample",'ngMessages']),
+    appDirectives = angular.module("xmApp.directives",[]),
+    appServices = angular.module("xmApp.services",[]),
+    appFilters = angular.module("xmApp.filters",[]),
+    appControllers = angular.module("xmApp.controllers",[]);
 
-myApp
-
+xmApp
+    
     .config(function($httpProvider){
         $httpProvider.interceptors.push([
             '$injector',
@@ -48,7 +48,7 @@ myApp
     })
 
     .constant("DOMAIN",{
-        "view": "/static/view/",
+        "view": "./",
         "version": '?v=20160616'
     })//网站接口前缀变量
 

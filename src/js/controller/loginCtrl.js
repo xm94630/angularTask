@@ -3,6 +3,8 @@
  */
 appControllers.controller("loginCtrl",function($scope, $location, $rootScope, AUTH_EVENTS, AuthService){
 
+    l(123123);
+
     $scope.user = {
         username: "",
         password: ""

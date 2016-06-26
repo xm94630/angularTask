@@ -1,4 +1,4 @@
-angular.module('myApp.controllers')
+angular.module('xmApp.controllers')
     .controller('myModalCtrl', function($scope, $uibModalInstance, items) {
         
     })
