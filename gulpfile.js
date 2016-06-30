@@ -21,7 +21,7 @@ var browserSyncOption ={
 /***********************************
  * 资源路径
  ***********************************/
-var htmlRouteArr = ['./src/*.html'
+var htmlRouteArr = ['./src/*.html',
                     './src/html/**/*.html'
                     ];
 var cssRouteArr  = ['./src/css/*.css'];
