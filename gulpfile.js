@@ -21,13 +21,17 @@ var browserSyncOption ={
 /***********************************
  * 资源路径
  ***********************************/
-var _jsList = ['./src/js/*.js',
-        './src/js/config/*.js',
-        './src/js/service/*.js',
-        './src/js/filter/*.js',
-        './src/js/directive/*.js',
-        './src/js/controller/*.js'
-    ];
+var htmlRouteArr = ['./src/*.html'
+                    './src/html/**/*.html'
+                    ];
+var cssRouteArr  = ['./src/css/*.css'];
+var jsRouteArr   = ['./src/js/*.js',
+                    './src/js/config/*.js',
+                    './src/js/service/*.js',
+                    './src/js/filter/*.js',
+                    './src/js/directive/*.js',
+                    './src/js/controller/*.js'
+                    ];
 
 /***********************************
  * 任务
@@ -40,21 +44,31 @@ gulp.task('browserSync',function(){
   browserSync(browserSyncOption);
 });
 
-
-
-//合并js
+//js
 gulp.task('scripts', function() {
-	console.log('----js----')
-    return gulp.src(_jsList)
+    return gulp.src(jsRouteArr)
         .pipe($.ngAnnotate())
         .pipe($.concat('all.min.js'))
         .pipe(gulp.dest('./src/'))
-        //.pipe(browserSync.reload({stream:true}));
+        .pipe(browserSync.reload({stream:true}));
+});
+
+//html
+gulp.task('html', function() {
+    return gulp.src(htmlRouteArr)
+        .pipe(browserSync.reload({stream:true}));
+});
+
+//css
+gulp.task('css', function() {
+    return gulp.src(htmlRouteArr)
+        .pipe(browserSync.reload({stream:true}));
 });
 
 gulp.task('watch', function() {
-    // 观察js
-    gulp.watch(_jsList, ['scripts']);
+    gulp.watch(jsRouteArr,   ['scripts']);
+    gulp.watch(htmlRouteArr, ['html']);
+    gulp.watch(cssRouteArr,  ['css']);
 });
 
 
