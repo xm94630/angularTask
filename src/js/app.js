@@ -1,61 +1,23 @@
-//自定义函数
-function l(){
-    console.log.apply(console,arguments)
-}
-l('angularJS Task');
-
-var xmApp = angular.module("XM",['ui.router','ui.bootstrap',"xmApp.directives","xmApp.services","xmApp.filters","xmApp.controllers","compileExample",'ngMessages']),
-    appDirectives = angular.module("xmApp.directives",[]),
-    appServices = angular.module("xmApp.services",[]),
-    appFilters = angular.module("xmApp.filters",[]),
-    appControllers = angular.module("xmApp.controllers",[]);
-
+/* 作者：xm94630
+ * 创建实例
+ * angular.module第一个参数是模块“引用名”，模块间可以通过它引入依赖
+ * 第11行代码中括号中就是通过“引用名”对模块的依赖引用，模块也可以理解为类似插件、服务的概念
+ * “ui.bootstrap”模块定义是在script标签中引入的
+ */
+var	appServices    = angular.module('xmApp.services',[]),
+    appDirectives  = angular.module('xmApp.directives',[]),
+    appControllers = angular.module('xmApp.controllers',[]),
+    appFilters     = angular.module('xmApp.filters',[]),
+    xmApp          = angular.module('XM',['ui.router','ui.bootstrap','xmApp.services','xmApp.directives','xmApp.controllers','xmApp.filters']);
+ 
 xmApp
-    
-    .config(function($httpProvider){
-        $httpProvider.interceptors.push([
-            '$injector',
-            function ($injector) {
-                return $injector.get('AuthInterceptor');
-            }
-        ]);
-        $httpProvider.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
-        $httpProvider.defaults.headers.post['Content-Type'] = ''
-            + 'application/x-www-form-urlencoded; charset=UTF-8';
-
-        $httpProvider.defaults.transformRequest = function(obj){
-            var str = [];
-            for(var p in obj) {
-                str.push(encodeURIComponent(p) + '=' + encodeURIComponent(obj[p]));
-            }
-            return str.join("&");
-        };
-
-    })
-
-    .constant('AUTH_EVENTS', {
-        loginSuccess: 'auth-login-success',
-        loginFailed: 'auth-login-failed',
-        logoutSuccess: 'auth-logout-success',
-        sessionTimeout: 'auth-session-timeout',
-        notAuthenticated: 'auth-not-authenticated',//认证
-        notAuthorized: 'auth-not-authorized'//合法
-    })
-
-    .constant('USER_ROLES', {
-        admin: '1',
-        common: '0'
-    })
-
-    .constant("DOMAIN",{
-        "view": "./",
-        "version": '?v=20160616'
-    })//网站接口前缀变量
-
-    .run(function ($rootScope, $http, $state, $stateParams, $location, AUTH_EVENTS, AuthService) {
+	//全局变量注入
+	.constant('HERO',{
+		HP:1000,
+		MP:2000
+	})
+    .run(function($rootScope, $state, $stateParams) {
+    	//绑到根作用域，方便获得当前状态
         $rootScope.$state = $state;
         $rootScope.$stateParams = $stateParams;
-        $rootScope.$on('$stateChangeStart', function (event, next, cur) {
-            
-        });
     });

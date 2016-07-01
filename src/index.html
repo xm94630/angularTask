@@ -4,10 +4,17 @@
     <meta charset="utf-8">
     <title>AngularJS Task</title>
     <link type="text/css" rel="stylesheet" href="css/style.css"/>
+    <script>
+    	function l(){
+    	    console.log.apply(console,arguments);
+    	}
+    	l('angularJS Task');
+    </script>
 </head>
-<body ng-controller="ApplicationController">
+<body>
 	<h1 class="C1 bg4 FC">AngularJS Task</h1>
-	<div ui-view="mainContent"></div>
+	<div ui-view="xmContent"></div>
+
 
 
 	<script src="js/libs/angularjs/1.4.8/angular.min.js"></script>
@@ -16,7 +23,5 @@
 	<script src="js/libs/angularjs/1.4.8/angular-animate.min.js"></script>
 	<script src="js/libs/angularjs/1.4.8/angular-messages.min.js"></script>
 	<script src="all.min.js"></script>
-	<script>
-	</script>
 </body>
 </html>

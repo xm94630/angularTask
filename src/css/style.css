@@ -338,6 +338,12 @@ body a {
 .titleFont{
   
 }
-
+.dialogBox{
+  width:500px;
+  text-align: left;
+  margin:0 auto;
+  background: #f3f3f3;
+  padding:10px;
+}
 
 

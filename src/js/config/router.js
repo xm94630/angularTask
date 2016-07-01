@@ -1,16 +1,11 @@
-/**
- * Created by zhangchuanliang on 2016/6/16.
- */
-
 xmApp
-    .config(function($stateProvider, $urlRouterProvider, $httpProvider, USER_ROLES, DOMAIN) {
+    .config(function($stateProvider, $urlRouterProvider) {
 
-        $urlRouterProvider.otherwise('/404');
         $stateProvider
             .state('login', {
                 url: '/login',
                 views: {
-                    'mainContent': {
+                    'xmContent': {
                         templateUrl: './html/module/login.html',
                         controller: 'loginCtrl'
                     }
@@ -19,25 +14,15 @@ xmApp
             .state('home', {
                 url: '/home',
                 views: {
-                    'mainContent': {
+                    'xmContent': {
                         templateUrl: './html/module/home.html',
                         controller: 'homeCtrl'
                     }
                 }
-            })
-            .state('dashbord',{
-                url: '/dashbord',
-                resolve: {
-                    sidebarList: function(promiseService){
-
-                    }
-                },
-                views: {
-                    'mainContent':{
-                        templateUrl: DOMAIN.view + 'html/module/dashbord.html' + DOMAIN.version,
-                        controller: 'dashbordCtrl'
-                    }
-                }
             });
+
+        $urlRouterProvider
+            .when('/', '/login')
+            .otherwise('/404');
 
     });
